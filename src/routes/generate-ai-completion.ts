@@ -32,10 +32,14 @@ export async function generateAICompletion(app: FastifyInstance) {
         });
       }
 
+      console.log("change prompt message");
+
       const promptMessage = prompt.replace(
         "{transcription}",
         video.transcription
       );
+
+      console.log("generating completion");
 
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo-16k",

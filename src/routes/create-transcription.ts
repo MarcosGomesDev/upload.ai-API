@@ -33,6 +33,8 @@ export async function createTranscription(app: FastifyInstance) {
 
       const audioReadStream = createReadStream(videoPath);
 
+      console.log("transcribing audio");
+
       const response = await openai.audio.transcriptions.create({
         file: audioReadStream,
         model: "whisper-1",
@@ -52,6 +54,8 @@ export async function createTranscription(app: FastifyInstance) {
           transcription,
         },
       });
+
+      console.log("transcription created");
 
       return {
         transcription,

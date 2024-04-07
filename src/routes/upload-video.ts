@@ -32,9 +32,13 @@ export async function uploadVideo(app: FastifyInstance) {
       });
     }
 
+    console.log("rename file");
+
     const fileBaseName = path.basename(data.filename, extension);
 
     const fileUploadName = `${fileBaseName}-${randomUUID()}${extension}`;
+
+    console.log("upload file");
 
     const uploadDestination = path.resolve(
       __dirname,
@@ -43,6 +47,8 @@ export async function uploadVideo(app: FastifyInstance) {
     );
 
     await pump(data.file, fs.createWriteStream(uploadDestination));
+
+    console.log("create video");
 
     const video = await prisma.video.create({
       data: {
