@@ -5,5 +5,8 @@ node_modules
 prisma/dev.db
 
 tmp/
-tmp/example.mp3
-tmp/example2.mp3
+
+api.http
+
+example.mp3
+example2.mp3
